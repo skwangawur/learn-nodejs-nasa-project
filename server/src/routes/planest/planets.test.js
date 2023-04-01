@@ -9,6 +9,10 @@ describe("test GET /v1/planets", () => {
     await loadPlanetsData();
   });
 
+  afterAll(async () => {
+    await mongoDisConnect();
+  });
+
   test("should get 8 habitable planets", async () => {
     const response = await request(app)
       .get("/v1/planets")
